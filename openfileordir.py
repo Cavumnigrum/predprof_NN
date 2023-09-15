@@ -215,28 +215,28 @@ class App(tk.Tk):
         btn_file.grid(row = 4,column = 0)
 
         btn_dir.grid(row = 4,column = 1)
-    def choose_file(self):
-        filetypes = (('Изображение','*.png *.jpg'),('Любой','*'))
-        filename = fd.askopenfilename(title = 'Открыть файл', initialdir = '/',
-                                    filetypes = filetypes)
-        if filename.endswith('.jpg') or filename.endswith('.png') or filename.endswith('.tiff'):
-            print(filename,isinstance(filename,str))
-            fdir.append(filename)
-            print(fdir,'dsa')
-            image = Image.open(filename)
-            caav = tk.Canvas(height=image.size[1]//2, width=image.size[0]//2)
-            photo = ImageTk.PhotoImage(image)
-            image = caav.create_image(0, 0, anchor='nw',image=photo)
-            caav.grid(row=3,column=0)
-            show()
-    def choose_directory(self):
-        directory = fd.askdirectory(title = 'Открыть папку', initialdir = '/')
-        print(directory)
-        print(os.listdir(path = directory))
-        if directory:
-            for i in os.listdir(path = directory):
-                if i.endswith('.jpg') or i.endswith('.png') or i.endswith('.tiff'):
-                    fdir.append(directory+'/'+i)
+    # def choose_file(self):
+    #     filetypes = (('Изображение','*.png *.jpg'),('Любой','*'))
+    #     filename = fd.askopenfilename(title = 'Открыть файл', initialdir = '/',
+    #                                 filetypes = filetypes)
+    #     if filename.endswith('.jpg') or filename.endswith('.png') or filename.endswith('.tiff'):
+    #         print(filename,isinstance(filename,str))
+    #         fdir.append(filename)
+    #         print(fdir,'dsa')
+    #         image = Image.open(filename)
+    #         caav = tk.Canvas(height=image.size[1]//2, width=image.size[0]//2)
+    #         photo = ImageTk.PhotoImage(image)
+    #         image = caav.create_image(0, 0, anchor='nw',image=photo)
+    #         caav.grid(row=3,column=0)
+    #         show()
+    # def choose_directory(self):
+    #     directory = fd.askdirectory(title = 'Открыть папку', initialdir = '/')
+    #     print(directory)
+    #     print(os.listdir(path = directory))
+    #     if directory:
+    #         for i in os.listdir(path = directory):
+    #             if i.endswith('.jpg') or i.endswith('.png') or i.endswith('.tiff'):
+    #                 fdir.append(directory+'/'+i)
 if __name__ == '__main__':
     app = App()
     frame = tk.Frame(master = app)
